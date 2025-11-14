@@ -1,11 +1,12 @@
 const cds = require('@sap/cds');
+const { SELECT } = require('@sap/cds/lib/ql/cds-ql');
 module.exports = cds.service.impl(srv => {
     const {Employees} = srv.entities;
 
     srv.before('CREATE', Employees, async (req) => {
-        const {salaryAmount, CURRENCY_CODE} = req.data;
+        const {salaryAmount, CURRENCY_CODE_code} = req.data;
 
-        if (!(salaryAmount < 50000 && CURRENCY_CODE === 'USD')) {
+        if (!(salaryAmount < 50000 && CURRENCY_CODE_code === 'USD')) {
             req.error(400, 'Employees salary must be less than 50000 USD');
         }
     });
@@ -15,13 +16,13 @@ module.exports = cds.service.impl(srv => {
     });
 
     srv.before('UPDATE', Employees, async(req) => {
-        const { salaryAmount, Currency, nameFirst, loginName} = req.data;
+        const { salaryAmount, CURRENCY_CODE_code, nameFirst, loginName} = req.data;
 
-        if (!(salaryAmount < 50000 && Currency === 'USD')) {
+        if (!(salaryAmount < 50000 && CURRENCY_CODE_code === 'USD')) {
             req.error(400, 'Employees salary must be less than 50000 USD');
         }
 
-        const oldData = await Selection.one.from(Employees).where({ID: req.data.ID});
+        const oldData = await SELECT.one.from(Employees).where({ID: req.data.ID});
         
         if (oldData) {
             if (nameFirst && nameFirst !== oldData.nameFirst) {

@@ -21,3 +21,63 @@ Content-Type: application/json
   "salaryAmount": 40000,
   "CURRENCY_CODE_code": "USD"
 }
+
+###
+
+
+POST http://localhost:4004/odata/v4/employee/Employees
+Content-Type: application/json
+
+{
+  "nameFirst": "arf",
+  "loginName": "Arf03",
+  "salaryAmount": 80000,
+  "CURRENCY_CODE_code": "USD"
+}
+
+###
+
+POST http://localhost:4004/odata/v4/employee/Employees
+Content-Type: application/json
+
+{
+  "nameFirst": "WUV",
+  "loginName": "WUV03",
+  "salaryAmount": 24000,
+  "CURRENCY_CODE_code": "EUR"
+}
+
+###
+
+
+PATCH http://localhost:4004/odata/v4/employee/Employees(ID=02BD2137-0890-1EEA-A6C2-BB55C19787FB)
+Content-Type: application/json
+
+
+{
+  "salaryAmount": 43000,
+  "CURRENCY_CODE_code": "USD"
+}
+
+###
+
+
+PATCH http://localhost:4004/odata/v4/employee/Employees(ID=02BD2137-0890-1EEA-A6C2-BB55C19847FB)
+Content-Type: application/json
+
+
+{
+  "loginName" : "SGAINS",
+  "salaryAmount": 43000,
+  "CURRENCY_CODE_code": "USD"
+
+}
+
+###
+
+DELETE http://localhost:4004/odata/v4/employee/Employees(ID=02BD2137-0890-1EEA-A6C2-BB55C197A7FB)
+
+
+###
+
+DELETE http://localhost:4004/odata/v4/employee/Employees(ID=02BD2137-0890-1EEA-A6C2-BB55C19867FB)
