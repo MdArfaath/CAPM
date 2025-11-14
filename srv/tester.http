@@ -1,0 +1,23 @@
+###
+
+GET http://localhost:4004/odata/v4/employee/Employees
+
+###
+
+GET http://localhost:4004/odata/v4/employee/Employees?$filter=startswith(nameFirst,'S')
+
+###
+
+GET http://localhost:4004/odata/v4/employee/Employees?$orderby=salaryAmount desc&$top=2
+
+###
+
+POST http://localhost:4004/odata/v4/employee/Employees
+Content-Type: application/json
+
+{
+  "nameFirst": "Adam",
+  "loginName": "ADAM01",
+  "salaryAmount": 40000,
+  "CURRENCY_CODE_code": "USD"
+}
